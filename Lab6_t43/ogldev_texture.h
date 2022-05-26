@@ -16,16 +16,31 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef OGLDEV_TYPES_H
-#define	OGLDEV_TYPES_H
+#ifndef TEXTURE_H
+#define	TEXTURE_H
 
-#ifndef WIN32
-#include <unistd.h>
-#endif
+#include <string>
 
-typedef unsigned int uint;
-typedef unsigned short ushort;
-typedef unsigned char uchar;
+#include <GL/glew.h>
+#include <Magick++.h>
 
-#endif	/* OGLDEV_TYPES_H */
+class Texture
+{
+public:
+    Texture(GLenum TextureTarget, const std::string& FileName);
+
+    bool Load();
+
+    void Bind(GLenum TextureUnit);
+
+private:
+    std::string m_fileName;
+    GLenum m_textureTarget;
+    GLuint m_textureObj;
+    Magick::Image m_image;
+    Magick::Blob m_blob;
+};
+
+
+#endif	/* TEXTURE_H */
 

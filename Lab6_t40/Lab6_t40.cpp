@@ -8,7 +8,7 @@
 #endif
 
 #include "engine_common.h"
-#include "util.h"
+#include "ogldev_util.h"
 #include "pipeline.h"
 #include "camera.h"
 #include "texture.h"
@@ -23,8 +23,8 @@
 
 using namespace std;
 
-#define WINDOW_WIDTH  1280  
-#define WINDOW_HEIGHT 1024
+#define WINDOW_WIDTH  1000  
+#define WINDOW_HEIGHT 1000
 
 #ifdef FREETYPE
 Markup sMarkup = { (char*)"Arial", 64, 1, 0, 0.0, 0.0,
@@ -102,7 +102,7 @@ public:
         }
 #endif        	
         m_glutTime = glutGet(GLUT_ELAPSED_TIME);
-        m_startTime = GetCurrentTime();
+        m_startTime = GetCurrentTimeMillis();
 
         if (!m_quad.LoadMesh("F:/Content/quad.obj", false)) {
             return false;

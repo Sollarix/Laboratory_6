@@ -16,16 +16,41 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef OGLDEV_TYPES_H
-#define	OGLDEV_TYPES_H
+#ifndef TECHNIQUE_H
+#define	TECHNIQUE_H
 
-#ifndef WIN32
-#include <unistd.h>
-#endif
+#include <list>
+#include <GL/glew.h>
 
-typedef unsigned int uint;
-typedef unsigned short ushort;
-typedef unsigned char uchar;
+class Technique
+{
+public:
 
-#endif	/* OGLDEV_TYPES_H */
+    Technique();
+
+    virtual ~Technique();
+
+    virtual bool Init();
+
+    void Enable();
+
+protected:
+
+    bool AddShader(GLenum ShaderType, const char* pFilename);
+
+    bool Finalize();
+
+    GLint GetUniformLocation(const char* pUniformName);
+    
+    GLint GetProgramParam(GLint param);
+    
+    GLuint m_shaderProg;    
+    
+private:
+
+    typedef std::list<GLuint> ShaderObjList;
+    ShaderObjList m_shaderObjList;
+};
+
+#endif	/* TECHNIQUE_H */
 

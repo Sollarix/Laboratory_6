@@ -1,6 +1,5 @@
 /*
-
-	Copyright 2011 Etay Meiri
+        Copyright 2011 Etay Meiri
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,18 +13,37 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 
-#ifndef OGLDEV_TYPES_H
-#define	OGLDEV_TYPES_H
+#ifndef SHADOW_MAP_TECHNIQUE_H
+#define	SHADOW_MAP_TECHNIQUE_H
 
-#ifndef WIN32
-#include <unistd.h>
-#endif
+#include "technique.h"
+#include "math_3d.h"
+#include "mesh.h"
+#include "camera.h"
 
-typedef unsigned int uint;
-typedef unsigned short ushort;
-typedef unsigned char uchar;
+#define NUM_OF_LAYERS 6
 
-#endif	/* OGLDEV_TYPES_H */
+class ShadowMapTechnique : public Technique {
+
+public:
+
+    ShadowMapTechnique();
+
+    virtual bool Init();
+    
+    void SetWVP(const Matrix4f& WVP);	
+    void SetWorld(const Matrix4f& World);	
+    void SetLightWorldPos(const Vector3f& Pos);
+    
+private:
+
+    GLint m_WVPLocation;
+    GLint m_WorldMatrixLocation;
+    GLint m_lightWorldPosLoc;
+};
+
+
+#endif	/* SHADOW_MAP_TECHNIQUE_H */
 

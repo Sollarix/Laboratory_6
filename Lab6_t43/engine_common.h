@@ -16,16 +16,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef OGLDEV_TYPES_H
-#define	OGLDEV_TYPES_H
+#ifndef ENGINE_COMMON_H
+#define	ENGINE_COMMON_H
 
-#ifndef WIN32
-#include <unistd.h>
-#endif
+#define COLOR_TEXTURE_UNIT              GL_TEXTURE0
+#define COLOR_TEXTURE_UNIT_INDEX        0
+#define SHADOW_TEXTURE_UNIT             GL_TEXTURE1
+#define SHADOW_TEXTURE_UNIT_INDEX       1
 
-typedef unsigned int uint;
-typedef unsigned short ushort;
-typedef unsigned char uchar;
-
-#endif	/* OGLDEV_TYPES_H */
+#endif	/* ENGINE_COMMON_H */
 

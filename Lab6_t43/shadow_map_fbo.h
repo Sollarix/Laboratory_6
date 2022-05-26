@@ -1,6 +1,5 @@
 /*
-
-	Copyright 2011 Etay Meiri
+        Copyright 2011 Etay Meiri
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,16 +15,29 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef OGLDEV_TYPES_H
-#define	OGLDEV_TYPES_H
+#ifndef SHADOWMAPFBO_H
+#define	SHADOWMAPFBO_H
 
-#ifndef WIN32
-#include <unistd.h>
-#endif
+#include <GL/glew.h>
 
-typedef unsigned int uint;
-typedef unsigned short ushort;
-typedef unsigned char uchar;
+class ShadowMapFBO
+{
+public:
+    ShadowMapFBO();
 
-#endif	/* OGLDEV_TYPES_H */
+    ~ShadowMapFBO();
+
+    bool Init(unsigned int WindowWidth, unsigned int WindowHeight);
+
+    void BindForWriting(GLenum CubeFace);
+
+    void BindForReading(GLenum TextureUnit);
+    
+private:
+    GLuint m_fbo;
+    GLuint m_shadowMap;
+    GLuint m_depth;
+};
+
+#endif	/* SHADOWMAPFBO_H */
 

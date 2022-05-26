@@ -16,16 +16,25 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef OGLDEV_TYPES_H
-#define	OGLDEV_TYPES_H
+#ifndef CALLBACKS_H
+#define	CALLBACKS_H
 
-#ifndef WIN32
-#include <unistd.h>
-#endif
+class ICallbacks
+{
+public:
 
-typedef unsigned int uint;
-typedef unsigned short ushort;
-typedef unsigned char uchar;
+    virtual void SpecialKeyboardCB(int Key, int x, int y) = 0;
 
-#endif	/* OGLDEV_TYPES_H */
+    virtual void KeyboardCB(unsigned char Key, int x, int y) = 0;
+
+    virtual void PassiveMouseCB(int x, int y) = 0;
+
+    virtual void RenderSceneCB() = 0;
+
+    virtual void IdleCB() = 0;
+    
+    virtual void MouseCB(int Button, int State, int x, int y) = 0;
+};
+
+#endif	/* I3DAPPLICATION_H */
 
